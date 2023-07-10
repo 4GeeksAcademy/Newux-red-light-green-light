@@ -7,12 +7,12 @@ import React, { useState, useEffect } from "react";
 const lightDurations = [3000, 2000, 1000];
 
 export const TrafficLight = ({ initialValue }) => {
-  const [colorIndex, setColorIndex] = useState(initialValue);
+  const [color, setColor] = useState(initialValue);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setColorIndex((colorIndex + 1) % 3);
-    }, lightDurations[colorIndex]);
+      setColor((color + 1) % 3);
+    }, lightDurations[color]);
     return () => {
       clearTimeout(timer);
     };
@@ -20,9 +20,9 @@ export const TrafficLight = ({ initialValue }) => {
 
   return (
     <div className="trafficLight rounded-5">
-      <Light color="#f00" active={colorIndex === 0} />
-      <Light color="#ff0" active={colorIndex === 2} />
-      <Light color="#0c0" active={colorIndex === 1} />
+      <Light color="#f00" active={color === 0} />
+      <Light color="#ff0" active={color === 2} />
+      <Light color="#0c0" active={color === 1} />
     </div>
   );
 };
